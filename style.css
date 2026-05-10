@@ -1,0 +1,230 @@
+/* ═══════════════════════════════════════════════
+   FLASHBANG BLOCKER — GOV BAR THEME
+   ═══════════════════════════════════════════════ */
+
+/* ── PAGE DIM OVERLAY ── */
+#page-dim-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483643;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(4px) brightness(0.3);
+  pointer-events: none; /* visual only — page still scrollable/clickable */
+  animation: fb-fadeIn 0.4s ease;
+}
+
+/* ── BOTTOM WARNING BAR ── */
+#flashbang-blocker {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2147483645;
+  display: flex;
+  justify-content: center;
+  padding: 12px 20px;
+  background: rgba(8, 8, 8, 0.95);
+  backdrop-filter: blur(12px);
+  border-top: 2px solid #cc0000;
+  box-shadow: 0 -4px 30px rgba(200, 0, 0, 0.3);
+  animation: fb-slideUp 0.35s ease;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.gov-terminal {
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.gov-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.gov-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 6px rgba(255, 80, 0, 0.7));
+}
+
+.gov-icon.flicker {
+  animation: fb-flicker 1.8s infinite;
+}
+
+.gov-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.gov-title {
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  color: #ff3333;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.gov-sub {
+  font-size: 11px;
+  color: #666;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── BUTTONS ── */
+.gov-btn-row {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.gov-btn-row button {
+  padding: 9px 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.07em;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  border: 1.5px solid transparent;
+  white-space: nowrap;
+}
+
+#gov-btn-dark {
+  background: #0a1a0a;
+  color: #00cc66;
+  border-color: #00aa55;
+  box-shadow: 0 0 10px rgba(0, 200, 100, 0.15);
+}
+
+#gov-btn-dark:hover {
+  background: #00cc66;
+  color: #000;
+  box-shadow: 0 0 18px rgba(0, 200, 100, 0.4);
+  transform: scale(1.04);
+}
+
+#gov-btn-enter {
+  background: transparent;
+  color: #484848;
+  border-color: #2a2a2a;
+}
+
+#gov-btn-enter:hover {
+  color: #999;
+  border-color: #555;
+  transform: scale(1.04);
+}
+
+/* ═══════════════════════════════════════════════
+   FLOATING TOGGLE — corner sticky, expand on hover, draggable
+   ═══════════════════════════════════════════════ */
+
+#color-toggle-btn {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 2147483647;
+
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  height: 40px;
+  width: 40px;       /* collapsed = circle */
+  border-radius: 20px;
+
+  background: rgba(15, 15, 15, 0.92);
+  border: 2px solid #2e2e2e;
+  cursor: grab;
+
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  user-select: none;
+  animation: fb-slideIn 0.4s ease;
+
+  transition:
+    width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.25s,
+    box-shadow 0.25s,
+    background 0.25s;
+}
+
+#color-toggle-btn:hover {
+  width: 118px;      /* expanded = pill with label */
+  border-color: #00cc66;
+  box-shadow: 0 0 16px rgba(0, 200, 100, 0.28);
+}
+
+#color-toggle-btn.active {
+  background: rgba(0, 22, 0, 0.92);
+  border-color: #00cc66;
+  box-shadow: 0 0 12px rgba(0, 200, 100, 0.3);
+}
+
+.ctb-icon {
+  font-size: 19px;
+  flex-shrink: 0;
+  width: 36px;
+  text-align: center;
+  line-height: 1;
+}
+
+.ctb-label {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  font-weight: bold;
+  color: #00cc66;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  text-transform: uppercase;
+  padding-right: 10px;
+  opacity: 0;
+  transition: opacity 0.15s ease 0.1s;
+}
+
+#color-toggle-btn:hover .ctb-label {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════
+   KEYFRAMES
+   ═══════════════════════════════════════════════ */
+
+@keyframes fb-fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fb-slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fb-slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fb-flicker {
+  0%, 100% { opacity: 1; }
+  45%       { opacity: 1; }
+  50%       { opacity: 0.1; }
+  55%       { opacity: 1; }
+  75%       { opacity: 0.5; }
+  80%       { opacity: 1; }
+}

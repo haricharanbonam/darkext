@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Light Theme Warning",
+  "version": "1.0",
+  "description": "Warns users before entering flashbang websites.",
+  "permissions": [],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["style.css"],
+     "run_at": "document_start"
+    }
+  ]
+}
