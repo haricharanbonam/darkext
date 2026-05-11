@@ -19,6 +19,8 @@ It gives you a quick option to darken the page instantly or continue as-is.
 ## 📸 Preview
 
 <img src="https://github.com/user-attachments/assets/477a193e-c14c-4700-b753-e6249e571d65" alt="DarkExt preview" />
+<img width="1038" height="506" alt="image" src="https://github.com/user-attachments/assets/365a6502-4670-4684-bc1f-b98783004352" />
+
 
 ---
 
